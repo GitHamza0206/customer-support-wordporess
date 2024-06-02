@@ -8,7 +8,7 @@ Requests
 streamlit
 typing_extensions
 unstructured
-chromadb
 tiktoken
 faiss-cpu
 pysqlite3-binary
+chroma
