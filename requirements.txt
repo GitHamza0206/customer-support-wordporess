@@ -2,9 +2,10 @@ langchain
 langchain_community
 langchain_groq
 langchain_openai
-langchain_chroma
 streamlit
 unstructured
 tiktoken
 faiss-cpu
 pysqlite3-binary
+chromadb>=0.4.0,<0.6.0
+langchain-chroma==0.1.1
