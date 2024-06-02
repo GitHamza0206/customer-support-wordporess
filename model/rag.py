@@ -1,14 +1,9 @@
-from langchain import hub
-from langchain_core.output_parsers import StrOutputParser
+
 from langchain_openai import ChatOpenAI
 from langchain_groq import ChatGroq
 from langchain_openai import OpenAIEmbeddings
-from langchain_community.document_loaders import WebBaseLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.docstore.document import Document
-import requests
 from langchain_community.document_loaders import UnstructuredMarkdownLoader
-import streamlit as st
 from langchain_chroma import Chroma
 from langchain.chains import create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
