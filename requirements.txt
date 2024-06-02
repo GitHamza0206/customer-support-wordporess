@@ -8,3 +8,4 @@ tiktoken
 faiss-cpu
 pysqlite3-binary
 sentence-transformers 
+markdown
