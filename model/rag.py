@@ -8,6 +8,7 @@ from langchain_community.vectorstores import FAISS
 from langchain.chains import create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain_core.prompts import ChatPromptTemplate
+from langchain_community.document_loaders import PyPDFLoader
 
 import os 
 
@@ -22,9 +23,14 @@ class Rag:
 
         self.retriever = self.retrieve_document()
 
+
     
 
     def load_and_split_documents(self):  
+
+        loader = PyPDFLoader(os.path.join(self.assets_path, "KB.pdf"))
+        pages = loader.load_and_split()
+
         docs= []
         for markdown_file in os.listdir(self.assets_path):
             if markdown_file.endswith(".md"):
@@ -40,6 +46,8 @@ class Rag:
             chunk_size=1000, chunk_overlap=200
         )
         doc_splits = text_splitter.split_documents(docs)
+        doc_splits.extend(pages)
+
         return doc_splits
     
     def retrieve_document(self):
