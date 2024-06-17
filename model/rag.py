@@ -28,7 +28,7 @@ class Rag:
 
     def load_and_split_documents(self):  
 
-        loader = PyPDFLoader(os.path.join(self.assets_path, "KB.pdf"))
+        loader = PyPDFLoader(os.path.join(self.assets_path, "kb.pdf"))
         pages = loader.load_and_split()
 
         docs= []
