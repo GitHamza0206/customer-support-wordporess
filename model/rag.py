@@ -14,7 +14,7 @@ import os
 
 class Rag:
     def __init__(self):
-        self.gpt4o = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0)
+        self.gpt4o = ChatOpenAI(model_name="gpt-4o", temperature=0)
         self.groq = ChatGroq(model_name="mixtral-8x7b-32768")
         self.openai_embeddings = OpenAIEmbeddings() 
         current_path = os.path.dirname(os.path.abspath(__file__))
