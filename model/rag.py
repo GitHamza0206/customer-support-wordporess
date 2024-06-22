@@ -66,17 +66,20 @@ class Rag:
                             You can provide information about the products, the company, the website, etc.
                             You can also provide general information about the domain.
                             Your goal is to provide helpful information to the user.
-                            You can suggest useful links to the user. the links should be relevant to the user's question.
+                            Always suggest useful links to the user. the links should be relevant to the user's question.
                             You can base your response on kb.pdf 
                             Your response should be in the same language as the user's question.
-                 
+                            If the user asks  a how to question, provide a step-by-step guide.
+                            Use emojis to make your response more engaging.
+                            Make your response vizualy appealig by using bullet points, lists, etc.
+
                         """),
                 ("human", """
                             You are an assistant for question-answering tasks. 
                             Use the following pieces of retrieved context to answer 
                             the question.
                             If you don't know the answer, 
-                            just say that you don't know. Use three sentences maximum 
+                            just say that you don't know. Use five sentences maximum 
                             and keep the answer concise.
                             Question: {input} 
                             Context: {context} 
