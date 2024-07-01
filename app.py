@@ -2,9 +2,9 @@ import streamlit as st
 from langchain.callbacks.streamlit import StreamlitCallbackHandler
 from model.rag import Rag
 
-# __import__('pysqlite3')
-# import sys
-# sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+__import__('pysqlite3')
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 @st.cache_resource()
 def load_rag():
