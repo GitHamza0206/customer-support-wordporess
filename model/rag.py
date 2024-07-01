@@ -72,7 +72,12 @@ class Rag:
                             If the user asks  a how to question, provide a step-by-step guide.
                             Use emojis to make your response more engaging.
                             Make your response vizualy appealig by using bullet points, lists, etc.
-
+                            try to explore all possibilities, example if i ask how to clean a roof,
+                            you can suggest different ways to clean a roof.
+                            When asked how to clean a roof, mention the methods without a high pressure cleaner by help
+                            of our chemicals and moss scrapers. But also mention the methods with the help of a high
+                            pressure cleaner with our chemicals and tools; 7 meter high pressure lance
+                 
                         """),
                 ("human", """
                             You are an assistant for question-answering tasks. 
