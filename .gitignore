@@ -1,1 +1,5 @@
 .streamlit 
+.env 
+app.zip 
+tutorial.ipynb
+__pycache__/
