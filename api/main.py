@@ -1,18 +1,27 @@
+import os
+import sys
+
+# Add the project root directory to Python path
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from flask import Flask, request, jsonify
 from langchain.chains import RetrievalQA
 from langchain_openai import OpenAI
 from flask_caching import Cache
 from flask_cors import CORS
 from model.rag import Rag
-import os
+from dotenv import load_dotenv
+load_dotenv() 
 
 app = Flask(__name__)
-CORS(app)  # This allows all origins
-app.config['CACHE_TYPE'] = 'simple'  # You can choose different types of cache (e.g., 'redis', 'memcached', etc.)
+CORS(app)
+app.config['CACHE_TYPE'] = 'simple'
 cache = Cache(app)
 
 # Create a singleton Rag instance
 rag_instance = None
+qa = None
+is_initialized = False
 
 def get_rag_instance():
     global rag_instance
@@ -20,14 +29,16 @@ def get_rag_instance():
         rag_instance = Rag()
     return rag_instance
 
-# Initialize your LangChain components here
-qa = None
-
-@app.before_first_request
 def initialize_qa():
-    global qa
-    rag = get_rag_instance()
-    qa = rag.make_rag_chain()
+    global qa, is_initialized
+    if not is_initialized:
+        rag = get_rag_instance()
+        qa = rag.make_rag_chain()
+        is_initialized = True
+
+@app.before_request
+def before_request():
+    initialize_qa()
 
 @app.route('/query', methods=['POST'])
 def query():
